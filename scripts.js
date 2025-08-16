@@ -2,7 +2,7 @@
         const codeInput = document.getElementById('code');
         const resultDiv = document.getElementById('result');
 
-        const secretCode = 'vinay'; // The correct name
+        const secretCode = 'Priti'; // The correct name
         const nextPageUrl = 'home.html'; // The page to go to on success
 
         form.addEventListener('submit', (e) => {
