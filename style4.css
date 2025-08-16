@@ -1,0 +1,161 @@
+   /* ===== CSS Variables for Theme ===== */
+    :root {
+      --color-pink-bg: #feecea;
+      --color-white: #fff;
+      --color-black: #333;
+      --color-text-pink: #ff7882;
+      --color-heart: #f43d67;
+      --font-title: 'Titan One', sans-serif;
+      --font-handwriting: 'Zeyada', cursive;
+    }
+
+    /* ===== Global Styles ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      height: 100vh;
+      background-color: var(--color-pink-bg);
+      background:linear-gradient(to top,rgba(0,0,0,0.7)50%,rgba(0,0,0,0.7)50%), url(img1.jpg);
+      background-size:cover;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* ===== Main Title ===== */
+    .main-title {
+        position: absolute;
+        top: 4vh;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-title);
+        font-size: clamp(2rem, 5vw, 3rem);
+        color: red;
+        text-shadow: 2px 2px 0px black, 4px 4px 0px black;
+        z-index: 20; /* Keep title on top */
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    /* ===== Animation Layers ===== */
+    .particles, .floating-hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particles .particle {
+      position: absolute;
+      color: var(--color-text-pink);
+      opacity: 0.3;
+    }
+
+    .floating-hearts i {
+      position: absolute;
+      bottom: -80px;
+      color: var(--color-text-pink);
+      animation: float-up linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes float-up {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ===== Center Heart ===== */
+    .center-heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 25vmax;
+      color: var(--color-heart);
+      text-shadow: 0 0 20px rgba(246, 31, 31, 0.5);
+      animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.610, 0.355, 1);
+      z-index: 2;
+      opacity: 0.15;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.05); }
+    }
+
+    /* ===== Polaroid Paper Styling ===== */
+    .paper {
+      position: absolute;
+      background-color: var(--color-white);
+      padding: 15px;
+      width: clamp(240px, 18vw, 300px);
+      box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      cursor: grab;
+      z-index: 5;
+    }
+
+    .paper:active { cursor: grabbing; }
+    
+    .paper .image-container {
+      width: 100%;
+      height: 200px;
+      background-color: #f0f0f0;
+      overflow: hidden;
+    }
+
+    .paper .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      user-select: none;
+    }
+    
+    .paper p {
+      font-family: var(--font-handwriting);
+      font-size: clamp(28px, 2.2vw, 38px);
+      color: var(--color-black);
+      padding: 10px 5px 0 5px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* ===== Hover Heart Effect ===== */
+    .hover-heart {
+      position: absolute;
+      font-size: 20px;
+      color: var(--color-heart);
+      pointer-events: none;
+      animation: float-away 1s ease-out forwards;
+      z-index: 999;
+    }
+    @keyframes float-away {
+      to { transform: translateY(-60px); opacity: 0; }
+    }
+
+    /* ===== NEW: Next Button Styling ===== */
+    .next-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--color-text-pink);
+      color: var(--color-white);
+      border: none;
+      padding: 15px 25px;
+      font-family: var(--font-title);
+      font-size: 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      z-index: 1000; /* Ensures it's on top of everything */
+    }
+
+    .next-btn:hover {
+      background-color: var(--color-heart);
+      transform: scale(1.05);
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+    }

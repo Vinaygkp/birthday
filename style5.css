@@ -1,0 +1,153 @@
+:root {
+          --color-pink-bg: #feecea;
+          --color-white: #fff;
+          --color-off-white: #fffafc;
+          --color-black: #333;
+          --color-text-pink: #ff7882;
+          --color-heart: #f43d67;
+          --font-title: 'Titan One', sans-serif;
+          --font-heading: 'Sriracha', sans-serif;
+          --font-handwriting: 'Zeyada', cursive;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        display: flex;
+        min-height: 100vh;
+        perspective: 2200px;
+        font: 1em/1.4 var(--font-body);
+        overflow: hidden;
+        color: var(--color-black);
+        background:linear-gradient(to top,rgba(0,0,0,0.7)50%,rgba(0,0,0,0.7)50%), url(img1.jpg);
+        background-size:cover;
+      }
+
+      .book {
+        position: relative;
+        margin: auto;
+        width: 45vmin;
+        height: 60vmin;
+        transform-style: preserve-3d;
+        transform: rotateX(10deg);
+        transition: transform 1s ease-in-out;
+      }
+
+      .page {
+        position: absolute;
+        inset: 0;
+        pointer-events: all;
+        user-select: none;
+        transform-style: preserve-3d;
+        transform-origin: left center;
+        transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1), z-index 0s 0.6s;
+        box-shadow: 0em 0.5em 1.5em -0.2em rgba(0,0,0,0.3);
+        border-radius: 0.25em 1em 1em 0.25em;
+      }
+      
+      .front, .back {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        overflow: hidden;
+        background-color: var(--color-off-white);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2em;
+        text-align: center;
+      }
+      .front { border-radius: 0.25em 1em 1em 0.25em; }
+      .back { border-radius: 1em 0.25em 0.25em 1em; transform: rotateY(180deg); }
+      
+      .book { counter-reset: page 0; }
+      .front::after, .back::after {
+        position: absolute;
+        bottom: 1em;
+        counter-increment: page;
+        content: counter(page);
+        font-size: 0.9em;
+        font-family: var(--font-heading);
+        color: #ccc;
+      }
+      .front::after { right: 1em; }
+      .back::after { left: 1em; }
+      .cover::after, .back-cover::after { content: ""; }
+      
+      .front:has(img), .back:has(img) { padding: 0; }
+      .front img, .back img { width: 100%; height: 100%; object-fit: cover; }
+
+      .cover {
+        background: linear-gradient(135deg, var(--color-heart), var(--color-text-pink));
+        color: var(--color-white);
+        border: 2px solid rgba(255,255,255,0.5);
+      }
+      .cover h1 {
+        font-family: var(--font-title);
+        font-size: clamp(2.5em, 5vw, 3.5em);
+        text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+      }
+      .cover p {
+        font-family: var(--font-heading);
+        font-size: 1.2em;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+      }
+
+      h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(1.5em, 3vw, 2em);
+        color: var(--color-text-pink);
+        margin-bottom: 0.5em;
+      }
+      p {
+        font-family: var(--font-handwriting);
+        font-size: clamp(1.4em, 2.5vw, 1.8em);
+        margin-bottom: 0.8em;
+        line-height: 1.4;
+        color: var(--color-black);
+      }
+      p:last-child { margin-bottom: 0; }
+      b { font-family: var(--font-heading); font-weight: bold; }
+
+      .floating-hearts {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: -1;
+      }
+      @keyframes float {
+        0% { transform: translateY(0); opacity: 0; }
+        10% { opacity: 0.8; }
+        100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+      }
+      .floating-hearts i {
+        position: absolute;
+        bottom: -80px;
+        color: var(--color-heart);
+        animation: float linear infinite;
+      }
+     button {
+            text-align:end;
+            background:#0ed9ec;
+            color:black;
+            border: 3px solid black;
+            padding: 12px 35px;
+            font-size: 1.2rem;
+            font-family:'Courier New', Courier, monospace;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px black;
+            font-weight: bold;
+            text-decoration:none;
+        }
+
+        button:hover {
+            background:pink;
+            color: red;
+            transform: scale(1);
+            box-shadow: 0 8px 16px black;
+        }

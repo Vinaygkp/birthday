@@ -1,0 +1,393 @@
+
+        /* ===== CSS Variables for Theme ===== */
+        :root {
+            --color-pink-bg: #feecea;
+            --color-white: #fff;
+            --color-black: #333;
+            --color-text-pink: #ff7882;
+            --color-heart: #F61F1F;
+            --original-accent: #ff8c00; /* Keeping some original vibrancy */
+        }
+
+        /* ===== CSS Reset & Global Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family:Arial, Helvetica, sans-serif;
+            background-image:linear-gradient(to top,rgba(0,0,0,0.7)50%,rgba(0,0,0,0.7)50%), url(img1.jpg);
+            background-size:cover;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-y: auto; /* Allow vertical scroll if needed */
+        }
+
+        /* ===== Main Container ===== */
+        .container {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh; /* Use min-height to adapt to content */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0; /* Add some padding for smaller screens */
+        }
+
+        /* ===== Main Box (Enhanced with Frosted Glass Effect) ===== */
+        .boxcontainer {
+            position: relative;
+            width: 90%;
+            max-width: 950px;
+            height: 90vh; /* Use viewport height for responsiveness */
+            max-height: 650px;
+            background: rgba(9, 216, 216, 0.4);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            animation: fadeInBox 2s ease forwards;
+        }
+        @keyframes fadeInBox {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ===== Flag Image ===== */
+        .image {
+            position: absolute;
+            top: 1%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: slideDown 1.5s 1s ease forwards;
+            opacity: 0;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateX(-50%) translateY(-50px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .image img {
+            width: clamp(1000px, 20vw, 180px); /* Responsive width */
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        /* ===== Happy Birthday Text ===== */
+        .text-happybirthday {
+            position: absolute;
+            top: 5%; /* Adjusted for better spacing */
+            left: 50%;
+            width: 100%;
+            transform: translateX(-50%);
+            animation: bounceText 2s 1.5s ease-out forwards;
+            opacity: 0;
+            text-align: center;
+            z-index: 10;
+        }
+        .text-happybirthday h1 {
+            font-family: "Titan One", sans-serif;
+            font-size: clamp(2rem, 10vw, 5rem); /* More flexible font size */
+            text-shadow: 2px 2px var(--color-black), -2px 2px var(--color-black), 2px -2px var(--color-black), -2px -2px var(--color-black), 2px 4px 0 var(--color-black);
+        }
+        .text-happybirthday .happy { color: var(--color-white); }
+        .text-happybirthday .birthday { color: var(--color-text-pink); }
+
+        @keyframes bounceText {
+            0% { opacity: 0; transform: translateX(-50%) scale(0.5); }
+            60% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+            80% { transform: translateX(-50%) scale(0.95); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1); }
+        }
+
+        /* ===== Cake Section ===== */
+        .cake {
+            position: absolute;
+            bottom: 2%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: riseUp 2s 2.5s ease-out forwards;
+            opacity: 0;
+            z-index: 5;
+        }
+        @keyframes riseUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(100px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .cake img {
+            width: clamp(180px, 35vw, 320px); /* Responsive width */
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 5px 20px rgba(0,0,0,0.2));
+        }
+        .cake img:hover { transform: scale(1.05) rotate(2deg); }
+
+        /* ===== Other animations (Balloons, Clouds, etc.) are unchanged ===== */
+        .box-balloon { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .balloon { position: absolute; width: clamp(50px, 10vw, 80px); animation: floatBalloon 6s ease-in-out infinite; opacity: 0; }
+        @keyframes floatBalloon {
+            0% { opacity: 0; transform: translateY(100px) scale(0.8); }
+            20% { opacity: 1; transform: translateY(0) scale(1); }
+            50% { transform: translateY(-50px) scale(1.1); }
+            80% { transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(100px) scale(0.8); }
+        }
+        .balloon:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .balloon:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .balloon:nth-child(3) { left: 50%; animation-delay: 2s; }
+        .balloon:nth-child(4) { left: 70%; animation-delay: 1.5s; }
+        .balloon:nth-child(5) { left: 85%; animation-delay: 0.5s; }
+        .box-cloud { position: absolute; top: 5%; width: 100%; display: flex; justify-content: space-between; pointer-events: none; }
+        .cloud { position: relative; width: clamp(80px, 15vw, 120px); opacity: 0.9; animation: driftCloud 40s linear infinite; }
+        @keyframes driftCloud { from { transform: translateX(-150px); } to { transform: translateX(100vw); } }
+        .cloud img { width: 100%; }
+        .box-firework { position: absolute; width: 100%; height: 100%; pointer-events: none; }
+        .firework { position: absolute; width: 100px; height: 100px; animation: burst 1s ease-out forwards; opacity: 0; }
+        @keyframes burst {
+            0% { opacity: 1; transform: scale(0.1); }
+            70% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+        .firework:nth-child(1) { top: 20%; left: 20%; animation-delay: 4s; }
+        .firework:nth-child(2) { top: 10%; left: 60%; animation-delay: 4.5s; }
+        .firework:nth-child(3) { top: 50%; left: 30%; animation-delay: 5s; }
+        .firework:nth-child(4) { top: 40%; left: 80%; animation-delay: 5.5s; }
+        .paperCannons { position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); animation: cannonZoom 1.5s ease-out forwards; opacity: 0; }
+        @keyframes cannonZoom { from { opacity: 0; transform: translateX(-50%) scale(0.5); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
+        .paperCannons img { width: clamp(250px, 50vw, 400px); }
+        .box-giftbox { position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-wrap: wrap; gap: 10px; width: 300px; justify-content: center; opacity: 0; animation: appearGift 2s ease-out forwards; animation-delay: 6s; }
+        @keyframes appearGift { from { opacity: 0; transform: translate(-50%, -40%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+        .box-giftbox img { width: 50px; transition: transform 0.3s ease; cursor: pointer; }
+        .box-giftbox img:hover { transform: rotate(10deg) scale(1.2); }
+        .boxcute { position: absolute; top: 10%; right: 10%; display: flex; flex-direction: column; gap: 10px; opacity: 0; animation: cuteAppear 2s ease-out forwards; animation-delay: 8s; }
+        @keyframes cuteAppear { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .cute { width: clamp(60px, 12vw, 80px); transition: transform 0.3s ease; }
+        .cute:hover { transform: scale(1.1) rotate(5deg); }
+
+        /* ===== Envelope / Mail Icon ===== */
+        .mail {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            height: 70px;
+            background:blueviolet;
+            border-radius: 50%;
+            border: 6px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            animation: popUp 1.5s 7s ease-out forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+        @keyframes popUp { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+        .mail:hover { transform: scale(1.1); background-color: var(--color-heart); }
+        .mail .fa-envelope { font-size: 32px; color: var(--color-white); }
+        
+        /* ===== Modal Mail Box ===== */
+        .boxMail {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; visibility: hidden;
+            transform: scale(0.8);
+            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0.5s;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .boxMail.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .boxMail-container {
+            position: relative;
+            width: 100%;
+            max-width: 750px; /* Perfect for laptops */
+            max-height: 90vh; /* Prevent overflow on shorter screens */
+            overflow-y: auto; /* Allow scrolling for content */
+            background: #fff8e4;
+            border-radius: 20px;
+            padding: clamp(20px, 5vw, 40px);
+            text-align: center;
+            border: 5px solid var(--color-black);
+            font-family: 'Dancing Script', cursive;
+        }
+        .boxMail .userImg {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 4px solid var(--color-text-pink);
+        }
+        .boxMail .userImg img { width: 100%; height: 100%; object-fit: cover; }
+        .boxMail h3 {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            color: var(--color-text-pink);
+            margin-bottom: 10px;
+        }
+        .boxMail p {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            line-height: 1.6;
+            color: var(--color-black);
+        }
+        .boxMail .fa-xmark {
+            position: absolute;
+            top: 10px; right: 10px;
+            width: 40px; height: 40px;
+            font-size: 1.5rem; color: var(--color-black);
+            background: white; border-radius: 50%;
+            border: 3px solid var(--color-black);
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .boxMail .fa-xmark:hover {
+            transform: scale(1.1) rotate(90deg);
+        }
+        
+        /* ===== NEW: Next Button Style ===== */
+        .next-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 30px;
+            font-family: 'Sriracha', cursive;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: bold;
+            color: var(--color-white);
+            background-color: var(--color-text-pink);
+            border: 3px solid var(--color-black);
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .next-button:hover {
+            background-color: var(--color-heart);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* ===== Click Heart Burst Effect ===== */
+        .click-heart {
+            position: fixed;
+            pointer-events: none;
+            animation: clickBurst 0.8s ease-out forwards;
+            color: var(--color-heart);
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            z-index: 10000;
+        }
+        .click-heart::before {
+            content: "\f004";
+        }
+        @keyframes clickBurst {
+            0% { opacity: 1; transform: scale(0.2) translate(-50%, -50%); }
+            100% { opacity: 0; transform: scale(1.2) translate(calc(-50% + var(--x)), calc(-50% + var(--y))); }
+        }
+
+        /* ===== Copy Text ===== */
+        #copy {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: #ff3d5a;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px 15px;
+            border-radius: 10px;
+        }
+        #copy a { text-decoration: none; color: #191919d7; }
+
+        /* ===== MEDIA QUERIES FOR RESPONSIVENESS ===== */
+
+        /* For Tablets and smaller laptops */
+        @media (max-width: 1024px) {
+            .boxcontainer {
+                height: 85vh;
+                max-height: 600px;
+            }
+            .text-happybirthday h1 {
+                text-shadow: 2px 2px var(--color-black), -2px 2px var(--color-black), 2px -2px var(--color-black), -2px -2px var(--color-black), 2px 3px 0 var(--color-black);
+            }
+        }
+
+        /* For Mobile Phones (Portrait) */
+        @media (max-width: 768px) {
+            .container {
+                align-items: flex-start; /* Align to top on smaller screens */
+                padding-top: 5vh;
+            }
+            .boxcontainer {
+                width: 95%;
+                height: 80vh; /* Adjust height for mobile */
+                max-height: none; /* Remove max-height for better fit */
+            }
+            .text-happybirthday {
+                top: 5%;
+            }
+            .cake {
+                bottom: 5%;
+            }
+            .mail {
+                width: 60px;
+                height: 60px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .mail .fa-envelope {
+                font-size: 28px;
+            }
+            .box-giftbox {
+                width: 250px;
+                top: 50%;
+            }
+            .boxcute {
+                top: 5%;
+                right: 5%;
+            }
+            .boxMail-container {
+                padding: 20px;
+            }
+            .boxMail .fa-xmark {
+                top: -10px;
+                right: -10px;
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* For very small screens */
+        @media (max-width: 480px) {
+             body {
+                overflow-x: hidden; /* Ensure no horizontal scrolling */
+            }
+            .text-happybirthday h1 {
+                line-height: 1.1;
+            }
+            .paperCannons img {
+                width: 200px;
+            }
+             .boxMail-container {
+                padding: 15px;
+             }
+             .boxMail h3 {
+                margin-bottom: 5px;
+            }
+             .boxMail p {
+                line-height: 1.5;
+            }
+            .next-button {
+                margin-top: 15px;
+                padding: 8px 25px;
+            }
+        }
