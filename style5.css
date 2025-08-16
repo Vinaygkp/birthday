@@ -20,12 +20,13 @@
         font: 1em/1.4 var(--font-body);
         overflow: hidden;
         color: var(--color-black);
-        background:linear-gradient(to top,rgba(0,0,0,0.7)50%,rgba(0,0,0,0.7)50%), url(img1.jpg);
-        background-size:cover;
+        background-color: var(--color-pink-bg);
+        background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.8) 25%, rgba(255, 255, 255, 0.8) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.8) 75%, rgba(255, 255, 255, 0.8) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.8) 25%, rgba(255, 255, 255, 0.8) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.8) 75%, rgba(255, 255, 255, 0.8) 76%, transparent 77%, transparent);
+        background-size: 80px 80px;
       }
 
       .book {
-        position:relative;
+        position: relative;
         margin: auto;
         width: 45vmin;
         height: 60vmin;
@@ -40,7 +41,7 @@
         pointer-events: all;
         user-select: none;
         transform-style: preserve-3d;
-        transform-origin: center;
+        transform-origin: left center;
         transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1), z-index 0s 0.6s;
         box-shadow: 0em 0.5em 1.5em -0.2em rgba(0,0,0,0.3);
         border-radius: 0.25em 1em 1em 0.25em;
@@ -129,25 +130,3 @@
         color: var(--color-heart);
         animation: float linear infinite;
       }
-     button {
-            text-align:end;
-            background:#0ed9ec;
-            color:black;
-            border: 3px solid black;
-            padding: 12px 35px;
-            font-size: 1.2rem;
-            font-family:'Courier New', Courier, monospace;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 12px black;
-            font-weight: bold;
-            text-decoration:none;
-        }
-
-        button:hover {
-            background:pink;
-            color: red;
-            transform: scale(1);
-            box-shadow: 0 8px 16px black;
-        }
