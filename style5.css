@@ -25,7 +25,8 @@
       }
 
       .book {
-        position:absolute;
+        position:relative;
+        justify-content:center;
         margin: auto;
         width: 45vmin;
         height: 60vmin;
