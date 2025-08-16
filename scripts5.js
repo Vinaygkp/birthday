@@ -9,7 +9,7 @@ const book = document.querySelector('.book');
             const rect = book.getBoundingClientRect();
             const clickX = e.clientX - rect.left;
 
-            if (clickX < rect.width / 2) {
+            if (clickX < rect.width / 3) {
                 currentPage = Math.max(0, currentPage - 1);
             } else {
                 currentPage = Math.min(pageCount, currentPage + 1);
