@@ -121,7 +121,7 @@
       @keyframes float {
         0% { transform: translateY(0); opacity: 0; }
         10% { opacity: 0.8; }
-        100% { transform: translateY(-60vh) rotate(720deg); opacity: 0; }
+        100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
       }
       .floating-hearts i {
         position: absolute;
